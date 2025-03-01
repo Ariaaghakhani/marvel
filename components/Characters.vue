@@ -69,7 +69,6 @@ export default {
     },
     async getCharacters(){
       this.loading = true
-      this.page =1
       SERVER.getCharacters(this.search,this.page)
           .then((res)=>{
             this.marvelStore.characters = res.data.data.results
