@@ -4,7 +4,7 @@
       <div class="bg-red-700 w-fit p-2 rounded text-white">LOGO</div>
       <div class="w-full bg-[#2C2E30] p-4 rounded mt-3 flex flex-nowrap items-center justify-between">
         <InputText  style="border-radius:.25rem" type="text" v-model="search" placeholder="Search for characters" class="w-full"/>
-        <Button  style="border-radius:.25rem;color:white " class="ms-4 rounded-xl" variant="secondary" label="Search" icon="pi pi-search" :loading="loading" @click="getCharacters(search)"/>
+        <Button  style="border-radius:.25rem;color:white " class="ms-4 rounded-xl" variant="secondary" label="Search" icon="pi pi-search" :loading="loading" @click="getCharacters()"/>
       </div>
     </div>
   </div>
@@ -69,6 +69,7 @@ export default {
     },
     async getCharacters(){
       this.loading = true
+      this.page =1
       SERVER.getCharacters(this.search,this.page)
           .then((res)=>{
             this.marvelStore.characters = res.data.data.results
